@@ -1,11 +1,16 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html >
+<html lang="eng" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Customer Management</title>
+<link rel="stylesheet" type="text/CSS" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 </head>
+
 <body>
+<div class="container-fluid text-center">
 <h1>Customer Management Service</h1>
-<a href="/customer">Customer</a>
+</div>
+<a class="h2" th:href="@{/customers}">Customer</a>
+
 </body>
 </html>

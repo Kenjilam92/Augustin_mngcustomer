@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="eng" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Management Customers</title>
+	<link rel="stylesheet" type="text/CSS" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+	<div class="container-fluid text-center">
+		<h2>Customers</h2>
+	</div>
+	<div class="container-fluid text-center">
+		<table class="table table-bordered">
+			<thead class="thead-dark">
+			<tr>
+				<th>Customer ID</th>
+				<th>First Name</th>	
+				<th>Middle Name</th>	
+				<th>Last Name</th>
+				<th>Email Address</th>
+				<th>Phone Number</th>	
+				<th>Enrolled Date</th>	
+				<th></th>						
+			</tr>
+			</thead>
+			<tbody>
+				<th:block th:each="customer : ${lstcstmrs}">
+				<tr>
+					<td>[[${customer.customerId}]]</td>
+				</tr>	
+				</th:block>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

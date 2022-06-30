@@ -2,16 +2,28 @@ package com.hexa.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "dependent")
 public class dependent {
 	
 	// Define fields to use in the table dependents
 	@Id //primary key for  dependents id
-	@GeneratedValue //auto generate the value for id
-	private int dependentId; //Id to identify the dependent
+	@GeneratedValue(strategy=GenerationType.IDENTITY) //auto generate the value for id
+	private Integer dependentId; //Id to identify the dependent
 	
 	//reference at parent table 
 	@ManyToOne //relationship many dependents to one customer
