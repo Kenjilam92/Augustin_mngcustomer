@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="eng" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Add New Customer</title>
+		<link rel="stylesheet" type="text/CSS" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	</head>
+	<body>
+		<div class="container-fluid text-center">
+			<div><h2>Enroll New Customer</h2></div>
+			<form th:action="@{/customers/save}" method="post" th:object="${cstmr}"
+			style="max-width: 600px; margin: 0 auto;">
+				<div class="border border-secondary rounded p-3 text-left">
+				
+					<div class="form-group row">
+						<label class="col-sm-4 col-form-label">First Name:</label>
+						<div class="col-sm-8">
+						<input type="text" th:field="*{firstName}" 
+							class="from-control" required  minlength="3" maxlength="45"/>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-4 col-form-label">Middle Name:</label>
+						<div class="col-sm-8">
+							<input type="text" th:field="*{middleName}" class="from-control"/>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-4 col-form-label">Last Name:</label>
+						<div class="col-sm-8">
+							<input type="text" th:field="*{lastName}" 
+								class="from-control" required minlength="3" maxlength="45"/>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-4 col-form-label">Email:</label>
+						<div class="col-sm-8">
+							<input type="email" th:field="*{email}" 
+								class="from-control" required minlength="8" maxlength="45"/>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-4 col-form-label">Phone Number:</label>
+						<div class="col-sm-8">
+						<input type="tel" th:field="*{phoneNumber}" 
+							class="from-control" required minlength="10" maxlength="12"/>
+						</div>
+					</div>
+					<!-- 
+					<div class="form-group row">
+						<label class="col-sm-4 col-form-label">Enroll Date:</label>
+						<div class="col-sm-8">
+							<input type="date" th:field="*{enrolldate}" 
+								class="from-control"/>
+						</div>
+					</div>
+					 -->
+					<div class="form-group row">
+						<label class="col-sm-4 col-form-label">Home Address:</label>
+						<div class="col-sm-8">
+							<input type="text" th:field="*{address}" 
+								class="from-control" required minlength="10" maxlength="90"/>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-4 col-form-label">City:</label>
+						<div class="col-sm-8">
+							<input type="text" th:field="*{cityAddress}" 
+								class="from-control" required minlength="10" maxlength="45"/>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-4 col-form-label">Zip Code:</label>
+						<div class="col-sm-8">
+							<input type="text" th:field="*{zipcodeAddress}" 
+								class="from-control" required minlength="5" maxlength="9"/>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-4 col-form-label">State:</label>
+						<div class="col-sm-8">
+							<input type="text" th:field="*{stateAddress}" 
+								class="from-control" required minlength="2" maxlength="45"/>
+						</div>
+					</div>
+					<!--  					
+					<div class="form-group row">
+						<label class="col-sm-4 col-form-label">dependents:</label>
+						<div class="col-sm-8">
+							<input type="checkbox"  class="from-control"/>
+						</div>
+					</div>
+					-->
+					<div class="text-center">
+						<button type="submit" class="btn btn-primary m-2">Save</button>
+						<button type="button" class="btn btn-secondary m-2" onclick="cancelForm()">Cancel</button>
+					</div>
+					
+				</div>
+			</form>
+			
+		</div>	
+		<script type="text/javascript">
+			function cancelForm() {
+				window.location="[[@{/customers}]]";
+			}
+		</script>		
+	</body>
+</html>

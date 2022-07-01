@@ -28,10 +28,10 @@ public class CustomerRepositoryTest {
 	public void Testaddcustomer() {
 		customer ctmr = new customer();
 		
-		ctmr.setFirstName("Juana");
+		ctmr.setFirstName("julia");
 		ctmr.setLastName("Ramirez");
-		ctmr.setEmail("juanag@yahoo.com");
-		ctmr.setPhoneNumber("777123456789");
+		ctmr.setEmail("julia@yahoo.com");
+		ctmr.setPhoneNumber("33323456789");
 		ctmr.setAddress("123 abc");
 		ctmr.setCityAddress("springfield");
 		ctmr.setStateAddress("DC");

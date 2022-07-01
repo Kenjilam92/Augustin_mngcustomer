@@ -16,5 +16,8 @@ public class CustomerS {
 		return (List<customer>) repo.findAll();
 	}
 	
+	public void SaveCustomer(customer cstmr) {
+		repo.save(cstmr);
+	}
 
 }
