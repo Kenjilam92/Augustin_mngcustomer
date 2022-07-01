@@ -2,27 +2,30 @@
 <html lang="eng" xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>Add New Customer</title>
+		<title>[[${pageTitle}]]</title>
 		<link rel="stylesheet" type="text/CSS" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 	</head>
 	<body>
 		<div class="container-fluid text-center">
-			<div><h2>Enroll New Customer</h2></div>
+			<div><h2>[[${pageTitle}]]</h2></div>
 			<form th:action="@{/customers/save}" method="post" th:object="${cstmr}"
 			style="max-width: 600px; margin: 0 auto;">
+			
+				<input type="hidden" th:field="*{customerId}">
+				
 				<div class="border border-secondary rounded p-3 text-left">
 				
 					<div class="form-group row">
 						<label class="col-sm-4 col-form-label">First Name:</label>
 						<div class="col-sm-8">
-						<input type="text" th:field="*{firstName}" 
-							class="from-control" required  minlength="3" maxlength="45"/>
+							<input type="text" th:field="*{firstName}" 
+								class="from-control" required  minlength="3" maxlength="45"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-4 col-form-label">Middle Name:</label>
 						<div class="col-sm-8">
-							<input type="text" th:field="*{middleName}" class="from-control"/>
+							<input type="text" th:field="*{middleName}" class="from-control" required  minlength="3" maxlength="45"/>
 						</div>
 					</div>
 					<div class="form-group row">

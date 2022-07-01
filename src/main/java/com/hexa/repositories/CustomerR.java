@@ -5,5 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import com.hexa.model.customer;
 
 public interface CustomerR extends CrudRepository<customer, Integer>{
+	//public Integer countById(Integer customerId);
 
 }
