@@ -2,29 +2,34 @@
 <html lang="eng" xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>[[${pageTitle}]]</title>
+		<!--  <title>[[${pageTitle}]]</title> -->
+		<title>New Dependent</title>
 		<link rel="stylesheet" type="text/CSS" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 	</head>
-	<body >
+	<body>
 		<div class="container-fluid text-center">
-			<div><h2>[[${pageTitle}]]</h2></div>
-			<form th:action="@{/customers/save}" method="post" th:object="${cstmr}"
-			style="background-color: #f8f9fa; 
+		
+			<div th:if="${dpndt.dependentId == null}"><h2>New dependent</h2></div>
+			<div th:unless="${dpndt.dependentId == null}"><h2>Update dependent</h2></div>
+			
+			<form th:action="@{/dependent/save}"  th:object="${dpndt}" method="post"
+				style="background-color: #f8f9fa; 
 					max-width: 40%; 
 					margin: 0 auto; 
 					box-shadow: 1.5rem 1.5rem .1rem lightblue; 
 					padding: .5rem;
-					border-radius: 1rem;">
-			
-				<input type="hidden" th:field="*{customerId}">
+					border-radius: 1rem;"> 
+
+				<input type="hidden" th:field="*{dependentId}" th:value="${dpndt.dependentId}" /> 
 				
-				<div class="rounded p-3 text-left">
-								
+				<div class=" rounded p-3 text-left">
+					
+				
 					<div class="form-group row">
 						<label class="col-sm-4 col-form-label">First Name:</label>
 						<div class="col-sm-8">
 							<input type="text" th:field="*{firstName}" 
-								class="from-control " required  minlength="2" maxlength="45"/>
+								class="from-control " required minlength="2" maxlength="45"/>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -55,51 +60,26 @@
 							class="from-control" required minlength="10" maxlength="12"/>
 						</div>
 					</div>
-					<!-- 
-					<div class="form-group row">
-						<label class="col-sm-4 col-form-label">Enroll Date:</label>
-						<div class="col-sm-8">
-							<input type="date" th:field="*{enrolldate}" 
-								class="from-control"/>
-						</div>
-					</div>
-					 -->
-					<div class="form-group row">
-						<label class="col-sm-4 col-form-label">Home Address:</label>
-						<div class="col-sm-8">
-							<input type="text" th:field="*{address}" 
-								class="from-control" required minlength="10" maxlength="90"/>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-sm-4 col-form-label">City:</label>
-						<div class="col-sm-8">
-							<input type="text" th:field="*{cityAddress}" 
-								class="from-control" required minlength="3" maxlength="45"/>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-sm-4 col-form-label">Zip Code:</label>
-						<div class="col-sm-8">
-							<input type="text" th:field="*{zipcodeAddress}" 
-								class="from-control" required minlength="5" maxlength="9"/>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-sm-4 col-form-label">State:</label>
-						<div class="col-sm-8">
-							<input type="text" th:field="*{stateAddress}" 
-								class="from-control" required minlength="2" maxlength="45"/>
-						</div>
-					</div>
-					 					
+			 					
 					<div class="form-group row">
 						<label class="col-sm-4 col-form-label">Register:</label>
 						<div class="col-sm-8">
 							<input type="checkbox"  th:field="*{enrolled}" class="from-control"/>
 						</div>
 					</div>
-					
+
+					<div class="form-group row">
+						<label class="col-sm-4 col-form-label">Customer:</label>
+						<div class="col-sm-8">
+							<select th:field="*{customers}" class="from-control " required >
+								<th:block th:each="cust :${liscustomers}">
+									<option th:text="${cust.customerId}+' '+${cust.firstName}" th:value="${cust.customerId}" />
+								</th:block>
+							</select>
+						</div>
+					</div>	
+
+			
 					<div class="text-center">
 						<button type="submit" class="btn btn-primary m-2">Save</button>
 						<button type="button" class="btn btn-secondary m-2" onclick="cancelForm()">Cancel</button>
@@ -111,7 +91,7 @@
 		</div>	
 		<script type="text/javascript">
 			function cancelForm() {
-				window.location="[[@{/customers}]]";
+				window.location="[[@{/dependent}]]";
 			}
 		</script>		
 	</body>

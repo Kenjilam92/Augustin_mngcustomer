@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -23,7 +22,7 @@ import lombok.NoArgsConstructor;
 public class customer {
 	
 	   // Define fields to use in the table
-		@Id //primary key for id
+		@Id //primary key for customerId
 		@GeneratedValue(strategy=GenerationType.IDENTITY) //auto generate the value for id
 		private Integer customerId; //Id to identify the customer
 		@Column(nullable = false, length =45)
@@ -46,11 +45,11 @@ public class customer {
 		private String zipcodeAddress;//Zip-code of address
 		@Column
 		private String stateAddress;//State; department; province
-		
 		@Column
-		@OneToMany( mappedBy = "customers")
-		private List<dependent> dependents;
-
+		private Boolean enrolled; // define is enrrolled is active (true) or not enrolled(false)
+//		@Column
+//		@OneToMany( mappedBy = "customers")
+//		private List<dependent> dependents;
 		/**
 		 * 
 		 */
@@ -58,7 +57,7 @@ public class customer {
 			super();
 			// TODO Auto-generated constructor stub
 		}
-
+		
 		/**
 		 * @param customerId
 		 * @param firstName
@@ -71,11 +70,12 @@ public class customer {
 		 * @param cityAddress
 		 * @param zipcodeAddress
 		 * @param stateAddress
-		 * @param dependents
+		 * @param enrolled
 		 */
 		public customer(Integer customerId, String firstName, String middleName, String lastName, String email,
 				String phoneNumber, Date enrolldate, String address, String cityAddress, String zipcodeAddress,
-				String stateAddress, List<dependent> dependents) {
+				String stateAddress, Boolean enrolled) {
+			super();
 			this.customerId = customerId;
 			this.firstName = firstName;
 			this.middleName = middleName;
@@ -87,103 +87,175 @@ public class customer {
 			this.cityAddress = cityAddress;
 			this.zipcodeAddress = zipcodeAddress;
 			this.stateAddress = stateAddress;
-			this.dependents = dependents;
+			this.enrolled = enrolled;
 		}
 
+		/**
+		 * @return the customerId
+		 */
 		public Integer getCustomerId() {
 			return customerId;
 		}
 
+		/**
+		 * @param customerId the customerId to set
+		 */
 		public void setCustomerId(Integer customerId) {
 			this.customerId = customerId;
 		}
 
+		/**
+		 * @return the firstName
+		 */
 		public String getFirstName() {
 			return firstName;
 		}
 
+		/**
+		 * @param firstName the firstName to set
+		 */
 		public void setFirstName(String firstName) {
 			this.firstName = firstName;
 		}
 
+		/**
+		 * @return the middleName
+		 */
 		public String getMiddleName() {
 			return middleName;
 		}
 
+		/**
+		 * @param middleName the middleName to set
+		 */
 		public void setMiddleName(String middleName) {
 			this.middleName = middleName;
 		}
 
+		/**
+		 * @return the lastName
+		 */
 		public String getLastName() {
 			return lastName;
 		}
 
+		/**
+		 * @param lastName the lastName to set
+		 */
 		public void setLastName(String lastName) {
 			this.lastName = lastName;
 		}
 
+		/**
+		 * @return the email
+		 */
 		public String getEmail() {
 			return email;
 		}
 
+		/**
+		 * @param email the email to set
+		 */
 		public void setEmail(String email) {
 			this.email = email;
 		}
 
+		/**
+		 * @return the phoneNumber
+		 */
 		public String getPhoneNumber() {
 			return phoneNumber;
 		}
 
+		/**
+		 * @param phoneNumber the phoneNumber to set
+		 */
 		public void setPhoneNumber(String phoneNumber) {
 			this.phoneNumber = phoneNumber;
 		}
 
+		/**
+		 * @return the enrolldate
+		 */
 		public Date getEnrolldate() {
 			return enrolldate;
 		}
 
+		/**
+		 * @param enrolldate the enrolldate to set
+		 */
 		public void setEnrolldate(Date enrolldate) {
 			this.enrolldate = enrolldate;
 		}
 
+		/**
+		 * @return the address
+		 */
 		public String getAddress() {
 			return address;
 		}
 
+		/**
+		 * @param address the address to set
+		 */
 		public void setAddress(String address) {
 			this.address = address;
 		}
 
+		/**
+		 * @return the cityAddress
+		 */
 		public String getCityAddress() {
 			return cityAddress;
 		}
 
+		/**
+		 * @param cityAddress the cityAddress to set
+		 */
 		public void setCityAddress(String cityAddress) {
 			this.cityAddress = cityAddress;
 		}
 
+		/**
+		 * @return the zipcodeAddress
+		 */
 		public String getZipcodeAddress() {
 			return zipcodeAddress;
 		}
 
+		/**
+		 * @param zipcodeAddress the zipcodeAddress to set
+		 */
 		public void setZipcodeAddress(String zipcodeAddress) {
 			this.zipcodeAddress = zipcodeAddress;
 		}
 
+		/**
+		 * @return the stateAddress
+		 */
 		public String getStateAddress() {
 			return stateAddress;
 		}
 
+		/**
+		 * @param stateAddress the stateAddress to set
+		 */
 		public void setStateAddress(String stateAddress) {
 			this.stateAddress = stateAddress;
 		}
 
-		public List<dependent> getDependents() {
-			return dependents;
+		/**
+		 * @return the enrolled
+		 */
+		public Boolean getEnrolled() {
+			return enrolled;
 		}
 
-		public void setDependents(List<dependent> dependents) {
-			this.dependents = dependents;
+		/**
+		 * @param enrolled the enrolled to set
+		 */
+		public void setEnrolled(Boolean enrolled) {
+			this.enrolled = enrolled;
 		}
 
 		@Override
@@ -193,9 +265,9 @@ public class customer {
 			result = prime * result + ((address == null) ? 0 : address.hashCode());
 			result = prime * result + ((cityAddress == null) ? 0 : cityAddress.hashCode());
 			result = prime * result + ((customerId == null) ? 0 : customerId.hashCode());
-			result = prime * result + ((dependents == null) ? 0 : dependents.hashCode());
 			result = prime * result + ((email == null) ? 0 : email.hashCode());
 			result = prime * result + ((enrolldate == null) ? 0 : enrolldate.hashCode());
+			result = prime * result + ((enrolled == null) ? 0 : enrolled.hashCode());
 			result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 			result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 			result = prime * result + ((middleName == null) ? 0 : middleName.hashCode());
@@ -229,11 +301,6 @@ public class customer {
 					return false;
 			} else if (!customerId.equals(other.customerId))
 				return false;
-			if (dependents == null) {
-				if (other.dependents != null)
-					return false;
-			} else if (!dependents.equals(other.dependents))
-				return false;
 			if (email == null) {
 				if (other.email != null)
 					return false;
@@ -243,6 +310,11 @@ public class customer {
 				if (other.enrolldate != null)
 					return false;
 			} else if (!enrolldate.equals(other.enrolldate))
+				return false;
+			if (enrolled == null) {
+				if (other.enrolled != null)
+					return false;
+			} else if (!enrolled.equals(other.enrolled))
 				return false;
 			if (firstName == null) {
 				if (other.firstName != null)
@@ -282,8 +354,13 @@ public class customer {
 			return "customer [customerId=" + customerId + ", firstName=" + firstName + ", middleName=" + middleName
 					+ ", lastName=" + lastName + ", email=" + email + ", phoneNumber=" + phoneNumber + ", enrolldate="
 					+ enrolldate + ", address=" + address + ", cityAddress=" + cityAddress + ", zipcodeAddress="
-					+ zipcodeAddress + ", stateAddress=" + stateAddress + ", dependents=" + dependents + "]";
+					+ zipcodeAddress + ", stateAddress=" + stateAddress + ", enrolled=" + enrolled + "]";
 		}
+
+		
+
+
+		
 		
 		
 

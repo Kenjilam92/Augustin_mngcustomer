@@ -15,7 +15,7 @@ public class CustomerS {
 	@Autowired private CustomerR repo;
 	
 	public List<customer> ListAllCustomer(){
-		return (List<customer>) repo.findAll();
+		return repo.findAll();
 	}
 	
 	public void SaveCustomer(customer cstmr) {

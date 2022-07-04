@@ -17,7 +17,9 @@ import com.hexa.services.CustomerS;
 @Controller
 public class CustomerC {
 	
-	@Autowired private CustomerS service;
+	@Autowired 
+	private CustomerS service;
+	
 	@GetMapping("/customers")
 	public String showCustomerList(Model model) {
 		List<customer> lstcstmrs= service.ListAllCustomer();
