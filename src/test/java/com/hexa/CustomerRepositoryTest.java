@@ -24,23 +24,23 @@ public class CustomerRepositoryTest {
 	
 	@Autowired CustomerR repo;
 	
-	@Test
-	public void Testaddcustomer() {
-		customer ctmr = new customer();
-		
-		ctmr.setFirstName("julia");
-		ctmr.setLastName("Ramirez");
-		ctmr.setEmail("julia@yahoo.com");
-		ctmr.setPhoneNumber("33323456789");
-		ctmr.setAddress("123 abc");
-		ctmr.setCityAddress("springfield");
-		ctmr.setStateAddress("DC");
-		ctmr.setZipcodeAddress("12345000");
-		
-		customer savectmr = repo.save(ctmr);
-		Assertions.assertThat(savectmr).isNotNull();
-		Assertions.assertThat(savectmr.getCustomerId()).isGreaterThan(0);
-	}
+//	@Test
+//	public void Testaddcustomer() {
+//		customer ctmr = new customer();
+//		
+//		ctmr.setFirstName("julia");
+//		ctmr.setLastName("Ramirez");
+//		ctmr.setEmail("julia@yahoo.com");
+//		ctmr.setPhoneNumber("33323456789");
+//		ctmr.setAddress("123 abc");
+//		ctmr.setCityAddress("springfield");
+//		ctmr.setStateAddress("DC");
+//		ctmr.setZipcodeAddress("12345000");
+//		
+//		customer savectmr = repo.save(ctmr);
+//		Assertions.assertThat(savectmr).isNotNull();
+//		Assertions.assertThat(savectmr.getCustomerId()).isGreaterThan(0);
+//	}
 		
 	@Test
 	public void TestListAllCustomer() {	
@@ -48,31 +48,31 @@ public class CustomerRepositoryTest {
 		Assertions.assertThat(lcust).hasSizeGreaterThan(0);
 	}
 	
-	@Test
-	public void TestupdateCustomer() {
-		Integer cID = 1;
-		String chName= "Augusto the Lord";
-		Optional<customer> uptcstmr= repo.findById(cID);
-		customer ctm = uptcstmr.get();
-		ctm.setFirstName(chName);
-		repo.save(ctm);
-		
-		customer udpcustomer = repo.findById(cID).get();
-		Assertions.assertThat(udpcustomer.getFirstName()).isEqualTo(chName);		
-	}
-	@Test
-	public void Testgetcustomer() {
-		Integer cID = 1;
-		Optional<customer> getcstmr= repo.findById(cID);
-		Assertions.assertThat(getcstmr).isPresent();
-	}
+//	@Test
+//	public void TestupdateCustomer() {
+//		Integer cID = 1;
+//		String chName= "Augusto the Lord";
+//		Optional<customer> uptcstmr= repo.findById(cID);
+//		customer ctm = uptcstmr.get();
+//		ctm.setFirstName(chName);
+//		repo.save(ctm);
+//		
+//		customer udpcustomer = repo.findById(cID).get();
+//		Assertions.assertThat(udpcustomer.getFirstName()).isEqualTo(chName);		
+//	}
+//	@Test
+//	public void Testgetcustomer() {
+//		Integer cID = 1;
+//		Optional<customer> getcstmr= repo.findById(cID);
+//		Assertions.assertThat(getcstmr).isPresent();
+//	}
 	
-	@Test
-	public void Testdeletecustomer() {
-		Integer cID = 5;
-		repo.deleteById(cID);
-		Optional<customer> delcstmr= repo.findById(cID);
-		Assertions.assertThat(delcstmr).isNotPresent();
-		
-	}
+//	@Test
+//	public void Testdeletecustomer() {
+//		Integer cID = 5;
+//		repo.deleteById(cID);
+//		Optional<customer> delcstmr= repo.findById(cID);
+//		Assertions.assertThat(delcstmr).isNotPresent();
+//		
+//	}
 }

@@ -11,6 +11,7 @@
 	<groupId>com.hexa</groupId>
 	<artifactId>mngcustomer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>mngcustomer</name>
 	<description>Customer Management project for Spring Boot</description>
 	<properties>
@@ -64,7 +65,11 @@
 			<artifactId>bootstrap</artifactId>
 			<version>4.3.1</version>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>		
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>webjars-locator-core</artifactId>
